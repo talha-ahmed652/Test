@@ -1,25 +1,15 @@
 version: 0.2
 
-phanse:
-  install:
-    command:
-      # install Node 16
-      - echo Installing node 12 ....
-      - curl -sl https://deb.nodesource.com/setup_16.x | bash -  
-      - apt-get install -y nodejs
-      # install Yarn
-
+phases:
   pre_build:
-    command:
-      # install dependencies
-      - echo installing npm i ...
-      - npm i
-  
+    commands:
+      - npm install
   build:
-    command:
-      - echo build creating ...
+    commands:
+      - npm run build
 
-artificats:
+artifacts:
   files:
-    - "**/*"    
-
+    - '**/*'
+  discard-paths: no
+  base-directory: build
